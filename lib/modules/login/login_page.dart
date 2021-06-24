@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payflow/modules/login/login_controller.dart';
 import 'package:payflow/shared/themes/app_colors.dart';
 import 'package:payflow/shared/themes/app_images.dart';
 import 'package:payflow/shared/themes/app_texts.dart';
@@ -15,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final loginController = LoginController();
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -46,7 +48,6 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(AppImages.logoMini),
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 30,
@@ -66,7 +67,9 @@ class _LoginPageState extends State<LoginPage> {
                       top: 40,
                     ),
                     child: SocialLoginButton(
-                      onTap: () {},
+                      onTap: () {
+                        loginController.googleSignIn(context);
+                      },
                     ),
                   ),
                 ],
